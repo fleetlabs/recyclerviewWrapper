@@ -48,10 +48,6 @@ public abstract class SimpleListFragment<VH extends BaseViewHolder, T> extends L
         return sampleListAdapter.getItem(position);
     }
 
-    protected void reloadData() {
-        sampleListAdapter.notifyDataSetChanged();
-    }
-
     protected
     @ColorRes
     int itemViewBackground() {

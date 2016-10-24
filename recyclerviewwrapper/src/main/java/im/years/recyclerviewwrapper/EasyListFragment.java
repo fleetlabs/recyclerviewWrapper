@@ -50,7 +50,6 @@ public abstract class EasyListFragment<T, V extends View> extends ListFragment {
     private View getItemView() {
         View realItemView = null;
 
-
         try {
             realItemView = (View) viewConstructor.newInstance(getContext());
             //For androidannotations
@@ -91,10 +90,6 @@ public abstract class EasyListFragment<T, V extends View> extends ListFragment {
 
     protected T getItem(int position) {
         return sampleListAdapter.getItem(position);
-    }
-
-    protected void reloadData() {
-        sampleListAdapter.notifyDataSetChanged();
     }
 
     protected

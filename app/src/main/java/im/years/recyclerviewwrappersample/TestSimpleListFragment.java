@@ -60,11 +60,6 @@ public class TestSimpleListFragment extends SimpleListFragment<MyViewHolder, Con
         contentMocks.add(contentMock);
         contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
         contentMocks.add(contentMock);
-
-        //View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_footer, null);
-        //setFooterView(footer);
-
-        //reloadData();
     }
 
     @Override
