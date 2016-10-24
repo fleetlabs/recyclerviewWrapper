@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseViewHolder;
+
 import java.util.ArrayList;
 
 import im.years.recyclerviewwrapper.EasyListFragment;
@@ -16,8 +18,8 @@ import im.years.recyclerviewwrapper.view.ListEmptyView;
 
 public class TestEasyListFragment extends EasyListFragment<ContentMock, ListItemView> {
     @Override
-    public void onBindViewItemHolder(ListItemView view, ContentMock item, int position) {
-        view.setText(item.title);
+    public void onBindViewItemHolder(BaseViewHolder holder, ListItemView view, ContentMock item, int position) {
+        view.render(item);
     }
 
     @Override

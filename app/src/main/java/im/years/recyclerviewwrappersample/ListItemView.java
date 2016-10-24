@@ -31,9 +31,13 @@ public class ListItemView extends LinearLayout {
         initViews();
     }
 
-    public void initViews() {
+    void initViews() {
         inflate(getContext(), R.layout.item_hello_list, this);
         textView = (TextView) findViewById(R.id.textView);
+    }
+
+    public void render(ContentMock item) {
+        setText(item.title);
     }
 
     public void setText(String text) {

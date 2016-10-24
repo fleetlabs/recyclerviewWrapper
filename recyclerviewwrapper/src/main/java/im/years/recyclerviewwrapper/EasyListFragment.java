@@ -22,7 +22,7 @@ import java.util.List;
  */
 
 public abstract class EasyListFragment<T, V extends View> extends ListFragment {
-    public abstract void onBindViewItemHolder(V view, T item, int position);
+    public abstract void onBindViewItemHolder(BaseViewHolder holder, V view, T item, int position);
 
     protected SampleListAdapter sampleListAdapter;
     Constructor viewConstructor;
@@ -118,9 +118,9 @@ public abstract class EasyListFragment<T, V extends View> extends ListFragment {
         protected void convert(BaseViewHolder baseViewHolder, T t) {
             View view = baseViewHolder.getConvertView();
             if (view.getClass().getName().equals(viewClass.getName())) {
-                EasyListFragment.this.onBindViewItemHolder((V) baseViewHolder.getConvertView(), t, getItems().indexOf(t));
+                EasyListFragment.this.onBindViewItemHolder(baseViewHolder, (V) baseViewHolder.getConvertView(), t, getItems().indexOf(t));
             } else {
-                EasyListFragment.this.onBindViewItemHolder((V) ((ViewGroup) view).getChildAt(0), t, getItems().indexOf(t));
+                EasyListFragment.this.onBindViewItemHolder(baseViewHolder, (V) ((ViewGroup) view).getChildAt(0), t, getItems().indexOf(t));
             }
         }
     }
