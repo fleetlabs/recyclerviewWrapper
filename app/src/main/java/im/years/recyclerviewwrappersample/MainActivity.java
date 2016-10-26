@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new TestBriefListFragment();
                     break;
                 case 2:
-                    fragment = new TestEasyListFragment();
+                    fragment = new TestFragment();
                     break;
             }
 

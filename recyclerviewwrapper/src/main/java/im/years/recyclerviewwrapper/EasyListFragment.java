@@ -14,6 +14,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,14 @@ public abstract class EasyListFragment<T, V extends View> extends ListFragment {
     Class viewClass;
 
     private Class getActualTypeClass(Class entity) {
-        ParameterizedType type = (ParameterizedType) entity.getGenericSuperclass();
+        Type superclass = entity.getGenericSuperclass();
+        boolean find = (superclass instanceof ParameterizedType);
+        while (!find) {
+            superclass = ((Class)superclass).getGenericSuperclass();
+            find = (superclass instanceof ParameterizedType);
+        }
+
+        ParameterizedType type = (ParameterizedType) superclass;
         Class entityClass = (Class) type.getActualTypeArguments()[1];
         return entityClass;
     }
