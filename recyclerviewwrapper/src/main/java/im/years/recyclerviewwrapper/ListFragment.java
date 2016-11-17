@@ -29,7 +29,7 @@ public abstract class ListFragment extends Fragment {
 
     View emptyView;
 
-    Integer currentPage = 0;
+    protected Integer currentPage = 0;
     boolean isEnabledLoadMore;
     boolean isEnabledRefresh;
 
