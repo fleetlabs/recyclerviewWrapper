@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * Created by alvinzeng on 19/10/2016.
  */
-
+@Deprecated
 public abstract class EasyListFragment<T, V extends View> extends ListFragment {
     public abstract void onBindViewItemHolder(BaseViewHolder holder, V view, T item, int position);
 
@@ -106,7 +106,7 @@ public abstract class EasyListFragment<T, V extends View> extends ListFragment {
         return 0;
     }
 
-    class SampleListAdapter extends BaseQuickAdapter<T> {
+    class SampleListAdapter extends BaseQuickAdapter<T, BaseViewHolder> {
 
         public SampleListAdapter(List<T> data) {
             super(data);

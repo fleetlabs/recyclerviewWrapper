@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by alvinzeng on 24/10/2016.
  */
-
+@Deprecated
 public abstract class SimpleListFragment<VH extends BaseViewHolder, T> extends ListFragment {
     protected abstract int itemViewRes();
 
@@ -69,7 +69,7 @@ public abstract class SimpleListFragment<VH extends BaseViewHolder, T> extends L
         return entityClass;
     }
 
-    class SampleListAdapter extends BaseQuickAdapter<T> {
+    class SampleListAdapter extends BaseQuickAdapter<T, BaseViewHolder> {
 
         public SampleListAdapter(int layoutResId, List<T> data) {
             super(layoutResId, data);

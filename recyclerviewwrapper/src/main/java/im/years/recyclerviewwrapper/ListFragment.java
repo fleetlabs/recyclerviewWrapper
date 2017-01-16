@@ -13,14 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.List;
+
+import im.years.recyclerviewwrapper.decoration.HorizontalDividerItemDecoration;
 
 /**
  * Created by alvinzeng on 19/10/2016.
  */
-
+@Deprecated
 public abstract class ListFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
@@ -48,7 +49,7 @@ public abstract class ListFragment extends Fragment {
                 @Override
                 public void onRefresh() {
                     if (mQuickAdapter != null && isEnabledLoadMore) {
-                        mQuickAdapter.loadComplete();
+                        mQuickAdapter.loadMoreComplete();
                     }
                     ListFragment.this.onRefresh();
                 }
@@ -116,7 +117,8 @@ public abstract class ListFragment extends Fragment {
             throw new RuntimeException("Please call setAdapter first.");
         }
         isEnabledLoadMore = true;
-        mQuickAdapter.openLoadMore(getPageSize());
+        mQuickAdapter.setAutoLoadMoreSize(getPageSize());
+        mQuickAdapter.setEnableLoadMore(true);
         mQuickAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
@@ -134,7 +136,7 @@ public abstract class ListFragment extends Fragment {
         }
         isEnabledLoadMore = false;
 
-        mQuickAdapter.openLoadMore(-1);
+        mQuickAdapter.setEnableLoadMore(false);
         mQuickAdapter.setOnLoadMoreListener(null);
         mQuickAdapter.notifyItemChanged(mRecyclerView.getChildCount());
     }
@@ -181,7 +183,9 @@ public abstract class ListFragment extends Fragment {
             if (isMore) {
                 currentPage++;
                 if (newDataSize == 0) {
-                    mQuickAdapter.loadComplete();
+                    mQuickAdapter.loadMoreEnd();
+                } else {
+                    mQuickAdapter.loadMoreComplete();
                 }
 
                 mQuickAdapter.addData(newData);
@@ -189,7 +193,8 @@ public abstract class ListFragment extends Fragment {
                 currentPage = 1;
 
                 if (newDataSize == 0 && emptyView != null && mQuickAdapter.getEmptyView() != emptyView) {
-                    mQuickAdapter.setEmptyView(true, false, emptyView);
+                    mQuickAdapter.setEmptyView(emptyView);
+                    mQuickAdapter.setHeaderFooterEmpty(true, false);
                 }
 
                 if (isEnabledLoadMore) {
@@ -199,7 +204,7 @@ public abstract class ListFragment extends Fragment {
             }
         } else {
             if (isMore) {
-                mQuickAdapter.showLoadMoreFailedView();
+                mQuickAdapter.loadMoreFail();
             }
         }
 

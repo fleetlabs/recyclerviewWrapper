@@ -17,6 +17,7 @@ import java.util.ArrayList;
 /**
  * Created by alvinzeng on 2/26/16.
  */
+@Deprecated
 public abstract class BriefListFragment<T> extends ListFragment {
     protected abstract int itemViewRes();
 
@@ -48,7 +49,7 @@ public abstract class BriefListFragment<T> extends ListFragment {
         return 0;
     }
 
-    class SampleListAdapter extends BaseQuickAdapter<T> {
+    class SampleListAdapter extends BaseQuickAdapter<T, BaseViewHolder> {
 
         public SampleListAdapter() {
             super(BriefListFragment.this.itemViewRes(), null);

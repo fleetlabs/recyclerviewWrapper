@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment = null;
             switch (position) {
                 case 0:
-                    fragment = new TestSimpleListFragment();
+                    fragment = new TestChildOfHelperFragment();
                     break;
                 case 1:
                     fragment = new TestBriefListFragment();
