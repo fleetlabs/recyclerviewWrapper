@@ -249,7 +249,7 @@ public class RecyclerViewHelper {
         synchronized (this) {
             if (success) {
 
-                if (requestPage == getCurrentPage() || requestPage > (getCurrentPage() + 1)) {
+                if ( isMore && （ requestPage == getCurrentPage() || requestPage > (getCurrentPage() + 1) ) ) {
                     return;
                 }
 
