@@ -104,7 +104,7 @@ class RecyclerViewAdapterHelper<T> {
                         LinearLayout linearLayout = new LinearLayout(parent.getContext());
                         linearLayout.setBackgroundColor(parent.getContext().getResources().getColor(simpleList.itemViewBackground()));
                         linearLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                        linearLayout.addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                        linearLayout.addView(view/*, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)*/);
 
                         view = linearLayout;
                     }
@@ -125,7 +125,7 @@ class RecyclerViewAdapterHelper<T> {
                     LinearLayout linearLayout = new LinearLayout(parent.getContext());
                     linearLayout.setBackgroundColor(parent.getContext().getResources().getColor(briefList.itemViewBackground()));
                     linearLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                    linearLayout.addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                    linearLayout.addView(view/*, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)*/);
                     view = linearLayout;
                 }
                 return new BaseViewHolder(view);
@@ -162,7 +162,7 @@ class RecyclerViewAdapterHelper<T> {
             LinearLayout linearLayout = new LinearLayout(((Fragment) (easyList)).getContext());
             linearLayout.setBackgroundColor(((Fragment) (easyList)).getContext().getResources().getColor(easyList.itemViewBackground()));
             linearLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            linearLayout.addView(realItemView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            linearLayout.addView(realItemView/*, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)*/);
 
             view = linearLayout;
         }
