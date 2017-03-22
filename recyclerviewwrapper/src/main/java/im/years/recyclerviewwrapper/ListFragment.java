@@ -71,25 +71,33 @@ public abstract class ListFragment extends Fragment {
         mQuickAdapter = adapter;
         mRecyclerView.setAdapter(mQuickAdapter);
 
-        mRecyclerView.addOnItemTouchListener(new SimpleClickListener() {
+        mQuickAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public boolean onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                ListFragment.this.onItemChildClick(view, position);
+                return true;
+            }
+        });
+
+        mQuickAdapter.setOnItemChildLongClickListener(new BaseQuickAdapter.OnItemChildLongClickListener() {
+            @Override
+            public void onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
+                ListFragment.this.onItemChildLongClick(view, position);
+            }
+        });
+
+        mQuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 ListFragment.this.onItemClick(view, position);
             }
+        });
 
+        mQuickAdapter.setOnItemLongClickListener(new BaseQuickAdapter.OnItemLongClickListener() {
             @Override
-            public void onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
+            public boolean onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
                 ListFragment.this.onItemLongClick(view, position);
-            }
-
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                ListFragment.this.onItemChildClick(view, position);
-            }
-
-            @Override
-            public void onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
-                ListFragment.this.onItemChildLongClick(view, position);
+                return true;
             }
         });
     }

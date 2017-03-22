@@ -76,5 +76,7 @@ public abstract class BriefListFragment<T> extends ListFragment {
         protected void convert(BaseViewHolder baseViewHolder, T t) {
             BriefListFragment.this.onBindViewItemHolder(baseViewHolder, t, getItems().indexOf(t));
         }
+
+
     }
 }

@@ -112,27 +112,38 @@ public class RecyclerViewHelper {
 
         if (mFragment instanceof ListClick) {
             final ListClick listClick = (ListClick) mFragment;
-            mRecyclerView.addOnItemTouchListener(new SimpleClickListener() {
-                @Override
-                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    listClick.onItemClick(view, adapter.getItem(position), position);
-                }
 
-                @Override
-                public void onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
-                    listClick.onItemLongClick(view, adapter.getItem(position), position);
-                }
+            if (mQuickAdapter != null) {
+                mQuickAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                    @Override
+                    public boolean onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                        listClick.onItemChildClick(view, adapter.getItem(position), position);
+                        return true;
+                    }
+                });
 
-                @Override
-                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    listClick.onItemChildClick(view, adapter.getItem(position), position);
-                }
+                mQuickAdapter.setOnItemChildLongClickListener(new BaseQuickAdapter.OnItemChildLongClickListener() {
+                    @Override
+                    public void onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
+                        listClick.onItemChildLongClick(view, adapter.getItem(position), position);
+                    }
+                });
 
-                @Override
-                public void onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
-                    listClick.onItemChildLongClick(view, adapter.getItem(position), position);
-                }
-            });
+                mQuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                        listClick.onItemClick(view, adapter.getItem(position), position);
+                    }
+                });
+
+                mQuickAdapter.setOnItemLongClickListener(new BaseQuickAdapter.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
+                        listClick.onItemLongClick(view, adapter.getItem(position), position);
+                        return true;
+                    }
+                });
+            }
         }
     }
 
