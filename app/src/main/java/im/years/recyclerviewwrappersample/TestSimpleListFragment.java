@@ -140,6 +140,6 @@ public class TestSimpleListFragment extends SimpleListFragment<MyViewHolder, Con
 
     @Override
     protected int getPageSize() {
-        return 5;
+        return 50;
     }
 }

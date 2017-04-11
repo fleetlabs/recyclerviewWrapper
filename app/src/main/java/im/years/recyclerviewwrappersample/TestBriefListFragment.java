@@ -74,6 +74,12 @@ public class TestBriefListFragment extends BriefListFragment<ContentMock> {
                 contentMocks.add(contentMock);
                 contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
                 contentMocks.add(contentMock);
+                contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+                contentMocks.add(contentMock);
+                contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+                contentMocks.add(contentMock);
+                contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+                contentMocks.add(contentMock);
 
                 //contentMocks.clear();
 

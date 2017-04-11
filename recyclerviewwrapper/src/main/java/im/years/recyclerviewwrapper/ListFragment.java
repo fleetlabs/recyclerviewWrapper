@@ -121,10 +121,19 @@ public abstract class ListFragment extends Fragment {
     }
 
     protected void enableLoadMore() {
+        isEnabledLoadMore = true;
+    }
+
+    protected void disableLoadMore() {
+        realDisableLoadMore();
+        isEnabledLoadMore = false;
+    }
+
+    private void realEnableLoadMore() {
         if (mQuickAdapter == null) {
             throw new RuntimeException("Please call setAdapter first.");
         }
-        isEnabledLoadMore = true;
+
         mQuickAdapter.setAutoLoadMoreSize(getPageSize());
         mQuickAdapter.setEnableLoadMore(true);
         mQuickAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
@@ -138,11 +147,10 @@ public abstract class ListFragment extends Fragment {
         });
     }
 
-    protected void disableLoadMore() {
+    private  void realDisableLoadMore() {
         if (mQuickAdapter == null) {
             throw new RuntimeException("Please call setAdapter first.");
         }
-        isEnabledLoadMore = false;
 
         mQuickAdapter.setEnableLoadMore(false);
         mQuickAdapter.setOnLoadMoreListener(null);
@@ -205,8 +213,10 @@ public abstract class ListFragment extends Fragment {
                     mQuickAdapter.setHeaderFooterEmpty(true, false);
                 }
 
-                if (isEnabledLoadMore) {
-                    enableLoadMore();
+                if (isEnabledLoadMore && newDataSize >=8) { // 8 items can let screen full. so your page size must bigger than 8
+                    realEnableLoadMore();
+                } else {
+                    realDisableLoadMore();
                 }
                 mQuickAdapter.setNewData(newData);
             }
