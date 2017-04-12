@@ -209,6 +209,9 @@ public abstract class ListFragment extends Fragment {
                 currentPage = 1;
 
                 if (newDataSize == 0 && emptyView != null && mQuickAdapter.getEmptyView() != emptyView) {
+                    if (emptyView.getParent() != null) {
+                        ((ViewGroup)emptyView.getParent()).removeView(emptyView);
+                    }
                     mQuickAdapter.setEmptyView(emptyView);
                     mQuickAdapter.setHeaderFooterEmpty(true, false);
                 }
