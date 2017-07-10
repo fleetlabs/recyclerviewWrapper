@@ -53,7 +53,7 @@ class RecyclerViewAdapterHelper<T> {
         } else if (host instanceof RecyclerViewHelper.EasyList) {
             easyList = (RecyclerViewHelper.EasyList) host;
             try {
-                viewClass = getActualTypeClass(simpleList.getClass(), 1);
+                viewClass = getActualTypeClass(easyList.getClass(), 1);
                 viewConstructor = viewClass.getConstructor(new Class[]{Context.class});
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
