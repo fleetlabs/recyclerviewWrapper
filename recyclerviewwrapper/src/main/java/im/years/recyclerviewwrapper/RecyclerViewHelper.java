@@ -116,16 +116,16 @@ public class RecyclerViewHelper {
             if (mQuickAdapter != null) {
                 mQuickAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                     @Override
-                    public boolean onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                         listClick.onItemChildClick(view, adapter.getItem(position), position);
-                        return true;
                     }
                 });
 
                 mQuickAdapter.setOnItemChildLongClickListener(new BaseQuickAdapter.OnItemChildLongClickListener() {
                     @Override
-                    public void onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
+                    public boolean onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
                         listClick.onItemChildLongClick(view, adapter.getItem(position), position);
+                        return true;
                     }
                 });
 

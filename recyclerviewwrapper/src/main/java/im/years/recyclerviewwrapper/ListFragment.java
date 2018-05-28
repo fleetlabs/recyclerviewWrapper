@@ -73,16 +73,16 @@ public abstract class ListFragment extends Fragment {
 
         mQuickAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
-            public boolean onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 ListFragment.this.onItemChildClick(view, position);
-                return true;
             }
         });
 
         mQuickAdapter.setOnItemChildLongClickListener(new BaseQuickAdapter.OnItemChildLongClickListener() {
             @Override
-            public void onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
+            public boolean onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
                 ListFragment.this.onItemChildLongClick(view, position);
+                return true;
             }
         });
 
